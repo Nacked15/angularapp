@@ -1,0 +1,138 @@
+body{
+    font-family: Helvetica, Arial;
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+    text-decoration: none;
+    list-style: none;
+}
+
+#content{
+    width: 80%;
+    min-height: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 5px #ddd;
+}
+
+header{
+    padding: 15px;
+    background: #009688;
+}
+
+header .title{
+    float: left;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    color: white;
+    padding: 20px;
+    margin-left: -65px;
+    padding-left: 65px;
+}
+
+header h1,
+header p{
+    margin: 0;
+    margin-left: 15px;
+}
+
+header p{
+    color: #ccc;
+}
+
+header #logo{
+    display: block;
+    float: left;
+    margin-top: 10px;
+    width: 70px;
+    border-radius: 90px;
+}
+
+section .main{
+    padding-left: 20px;
+}
+
+#favoritos-list{
+    padding: 0px;
+    margin: 0px;
+}
+
+.favorito-item{
+    list-style: none;
+    border: 1px solid #ddd;
+    float: left;
+    width: 30%;
+    height: 120px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: gray;
+    background: white;
+    margin: 10px;
+}
+
+.favorito-item .content-data{
+    float: left;
+    margin-left: 20px;
+}
+
+.favorito-item h5{
+    color: #666;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+}
+
+h5{
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -moz-margin-before: 1em;
+    -moz-margin-after: 1em;
+}
+
+li p{
+   -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+    -moz-margin-before: 0.5em;
+    -moz-margin-after: 0.5em; 
+}
+
+.btn{
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-color: #1976d2;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #ddd;
+    padding: 5px;
+    text-decoration: none;
+    color: white;
+    background: #2979FF;
+    cursor: pointer;
+    margin-right: 5px;
+
+}
+
+.btn-info {
+    background: #03A9F4;
+    border-color: #03A9F4;
+}
+
+.btn-warning {
+    background: #FF9100;
+    border-color: #FF9100;
+}
+
+.btn-danger {
+    background: #DD2C00;
+    border-color: #DD2C00;
+}
+
+footer{
+    width: 80%;
+    margin: 15px auto 0 auto;
+    color: gray;   
+}
+
