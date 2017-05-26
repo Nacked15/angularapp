@@ -20,6 +20,9 @@ var FavoritoService = (function () {
     FavoritoService.prototype.getFavoritos = function () {
         return this._http.get(this.url + 'favoritos').map(function (res) { return res.json(); });
     };
+    FavoritoService.prototype.getFavorito = function (id) {
+        return this._http.get(this.url + 'favorito/' + id).map(function (res) { return res.json(); });
+    };
     return FavoritoService;
 }());
 FavoritoService = __decorate([
