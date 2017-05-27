@@ -12,6 +12,8 @@ import { Favorito } from '../models/favorito';
 
 export class FavoritosListComponent implements OnInit{
     public title: string;
+    public loading: boolean;
+
     public favoritos: Favorito[];
     public errorMessage;
 
@@ -19,6 +21,7 @@ export class FavoritosListComponent implements OnInit{
         private _favoritoService: FavoritoService
     ){
         this.title = 'Mis Marcadores';
+        this.loading = true;
     }
 
     ngOnInit(){
@@ -30,6 +33,8 @@ export class FavoritosListComponent implements OnInit{
 
                 if (!this.favoritos) {
                     alert('Error en el server');
+                } else{
+                    this.loading = false;
                 }
             },
             error => {

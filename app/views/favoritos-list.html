@@ -1,13 +1,17 @@
+<div class="loading" *ngIf="loading">
+    <img src="../../assets/img/Preloader_1.gif" alt="">
+</div>
+
 <h3>{{title}}</h3>
 
-<ul id="favoritos-list">
+<ul id="favoritos-list" *ngIf="favoritos">
     <li *ngFor="let favorito of favoritos" class="favorito-item">
         <div class="content-data">
             <h5>{{favorito.title}}</h5>
             <p class="url">{{favorito.url}}</p>
             <p class="url">{{favorito.description}}</p>
             <p class="buttons">
-                <a href="{{favorito.url}}" target="_blank" class="btn btn-default">Visit</a>
+                <a href="http://{{favorito.url}}" target="_blank" class="btn btn-default">Visit</a>
                 <a [routerLink]="['/marcador', favorito._id]" class="btn btn-info">Details</a>
                 <a href="{{favorito.url}}" target="_blank" class="btn btn-warning">Edit</a>
                 <a href="{{favorito.url}}" target="_blank" class="btn btn-danger">Delete</a>
