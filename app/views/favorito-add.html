@@ -1,17 +1,40 @@
 <div class="favorito-box">
-    <h3 class="title">{{ title }}</h3>
+    <h3 class="title">{{ titleSection }}</h3>
 
-    <form #formFavorito>
+    <!--Form With Two-Way Data Binding-->
+    <form #formFavorito (ngSubmit)="onSubmit()">
         <label>Título:</label>
-        <p><input type="text" name="title"></p>
+        <p>
+            <input type="text" 
+                   name="title" 
+                   #title="ngModel" 
+                   [(ngModel)]="favorito.title"
+                   required>
+            <small class="no-validate" *ngIf="title.touched && !title.valid">Campo requerido!!</small>
+        </p>
 
         <label>Descripción:</label>
-        <p><input type="text" name="description"></p>
+        <p>
+            <input type="text" 
+                   name="description" 
+                   #description="ngModel" 
+                   [(ngModel)]="favorito.description"
+                   required>
+            <small class="no-validate" *ngIf="description.touched && !description.valid">Campo requerido!!</small>
+        </p>
 
         <label>URL:</label>
-        <p><input type="url" name="url"></p>
+        <p>
+            <input type="url" 
+                   name="url" 
+                   #url="ngModel" 
+                   [(ngModel)]="favorito.url"
+                   required
+                   placeholder="http://www.domain.com">
+            <small class="no-validate" *ngIf="url.touched && !url.valid">Intruduce una url valida!!</small>
+        </p>
 
-        <input type="submit" value="{{title}}">
+        <input type="submit" value="{{titleSection}}">
     </form>
 </div>
     

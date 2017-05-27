@@ -13,18 +13,36 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var favorito_service_1 = require("../services/favorito.service");
 var favorito_1 = require("../models/favorito");
-var FavoritoAddComponent = (function () {
-    function FavoritoAddComponent(_favoritoService, _route, _router) {
+var FavoritoEditComponent = (function () {
+    function FavoritoEditComponent(_favoritoService, _route, _router) {
         this._favoritoService = _favoritoService;
         this._route = _route;
         this._router = _router;
-        this.titleSection = 'Nuevo Marcador.';
+        this.titleSection = 'Editar Marcador.';
     }
-    FavoritoAddComponent.prototype.ngOnInit = function () {
+    FavoritoEditComponent.prototype.ngOnInit = function () {
         this.favorito = new favorito_1.Favorito("", "", "", "");
-        console.log(this.favorito);
+        this.getFavorito();
     };
-    FavoritoAddComponent.prototype.onSubmit = function () {
+    FavoritoEditComponent.prototype.getFavorito = function () {
+        var _this = this;
+        this._route.params.forEach(function (params) {
+            var id = params['id'];
+            _this._favoritoService.getFavorito(id).subscribe(function (response) {
+                _this.favorito = response.favorito;
+                if (!_this.favorito) {
+                    _this._router.navigate(['/']);
+                }
+            }, function (error) {
+                _this.errorMessage = error;
+                if (_this.errorMessage != null) {
+                    console.log(_this.errorMessage);
+                    alert('Error en la petición');
+                }
+            });
+        });
+    };
+    FavoritoEditComponent.prototype.onSubmit = function () {
         var _this = this;
         console.log(this.favorito);
         this._favoritoService.addFavorito(this.favorito).subscribe(function (response) {
@@ -43,17 +61,17 @@ var FavoritoAddComponent = (function () {
             }
         });
     };
-    return FavoritoAddComponent;
+    return FavoritoEditComponent;
 }());
-FavoritoAddComponent = __decorate([
+FavoritoEditComponent = __decorate([
     core_1.Component({
-        selector: 'favorito-add',
+        selector: 'favorito-edit',
         templateUrl: 'app/views/favorito-add.html',
         providers: [favorito_service_1.FavoritoService]
     }),
     __metadata("design:paramtypes", [favorito_service_1.FavoritoService,
         router_1.ActivatedRoute,
         router_1.Router])
-], FavoritoAddComponent);
-exports.FavoritoAddComponent = FavoritoAddComponent;
-//# sourceMappingURL=favorito-add.component.js.map
+], FavoritoEditComponent);
+exports.FavoritoEditComponent = FavoritoEditComponent;
+//# sourceMappingURL=favorito-edit.component.js.map

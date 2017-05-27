@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Favorito = (function () {
-    function Favorito(title, description, url) {
+    function Favorito(_id, title, description, url) {
+        this._id = _id;
         this.title = title;
         this.description = description;
         this.url = url;

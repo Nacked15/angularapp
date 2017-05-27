@@ -5,12 +5,12 @@ import { FavoritoService } from '../services/favorito.service';
 import { Favorito } from '../models/favorito';
  
 @Component({
-    selector: 'favorito-add',
+    selector: 'favorito-edit',
     templateUrl: 'app/views/favorito-add.html',
     providers: [FavoritoService]
 })
  
-export class FavoritoAddComponent implements OnInit {
+export class FavoritoEditComponent implements OnInit {
     public titleSection: string;
     public favorito: Favorito;
     public errorMessage;
@@ -20,12 +20,36 @@ export class FavoritoAddComponent implements OnInit {
         private _route: ActivatedRoute,
         private _router: Router
     ){
-        this.titleSection = 'Nuevo Marcador.'
+        this.titleSection = 'Editar Marcador.'
     }
 
     ngOnInit(){
         this.favorito = new Favorito("","", "", "");
-        console.log(this.favorito);
+        this.getFavorito();
+    }
+
+    getFavorito() {
+        this._route.params.forEach((params: Params) => {
+            let id = params['id'];
+
+            this._favoritoService.getFavorito(id).subscribe(
+                response => {
+                    this.favorito = response.favorito;
+
+                    if (!this.favorito) {
+                       this._router.navigate(['/']);
+                    }
+                },
+                error => {
+                    this.errorMessage = <any>error;
+
+                    if(this.errorMessage != null){
+                        console.log(this.errorMessage);
+                        alert('Error en la petición');
+                    }
+                }
+            );
+        });
     }
 
     public onSubmit(){

@@ -184,6 +184,10 @@ li p{
     border-color: #DD2C00;
 }
 
+.no-validate{
+    color: #DD2C00;
+}
+
 footer{
     width: 80%;
     margin: 15px auto 0 auto;
