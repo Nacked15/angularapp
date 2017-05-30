@@ -11,11 +11,16 @@
             <p class="url">{{favorito.url}}</p>
             <p class="url">{{favorito.description}}</p>
             <p class="buttons">
-                <a href="http://{{favorito.url}}" target="_blank" class="btn btn-default">Visit</a>
+                <a href="{{favorito.url}}" target="_blank" class="btn btn-default">Visit</a>
                 <a [routerLink]="['/marcador', favorito._id]" class="btn btn-info">Details</a>
                 <a [routerLink]="['/editar-marcador', favorito._id]" class="btn btn-warning">Edit</a>
-                <a href="{{favorito.url}}" target="_blank" class="btn btn-danger">Delete</a>
+                <a (click)="onDeleteConfirm(favorito._id)" class="btn btn-danger">Delete</a>
             </p>
+            <div class="seguro" *ngIf="confirmado == favorito._id">
+                <small>¿Seguro de elimiar este elemento.?</small><br><br>
+                <a (click)="onDeleteMark(favorito._id)" class="btn btn-danger">Delete</a>
+                <a (click)="onCancelConfirm(favorito._id)" class="btn btn-warning">Cancel</a>
+            </div>
         </div>
     </li>
  </ul>

@@ -45,20 +45,23 @@ var FavoritoEditComponent = (function () {
     FavoritoEditComponent.prototype.onSubmit = function () {
         var _this = this;
         console.log(this.favorito);
-        this._favoritoService.addFavorito(this.favorito).subscribe(function (response) {
-            if (!response.favorito) {
-                alert('Error desde el servidor');
-            }
-            else {
-                _this.favorito = response.favorito;
-                _this._router.navigate(['/marcador', _this.favorito._id]);
-            }
-        }, function (error) {
-            _this.errorMessage = error;
-            if (_this.errorMessage != null) {
-                console.log(_this.errorMessage);
-                alert('Error en la petición');
-            }
+        this._route.params.forEach(function (params) {
+            var id = params['id'];
+            _this._favoritoService.editFavorito(id, _this.favorito).subscribe(function (response) {
+                if (!response.favorito) {
+                    alert('Error desde el servidor');
+                }
+                else {
+                    _this.favorito = response.favorito;
+                    _this._router.navigate(['/marcador', _this.favorito._id]);
+                }
+            }, function (error) {
+                _this.errorMessage = error;
+                if (_this.errorMessage != null) {
+                    console.log(_this.errorMessage);
+                    alert('Error en la petición');
+                }
+            });
         });
     };
     return FavoritoEditComponent;
